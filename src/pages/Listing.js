@@ -1,44 +1,25 @@
-import React ,{useEffect} from 'react'
+import React ,{useEffect,useState} from 'react'
 import { Space, Table,Tag } from 'antd';
 
 
 const columns = [
   {
-    title: 'Name',
-    dataIndex: 'name',
-    key: 'name',
+    title: 'Id',
+    dataIndex: 'id',
+    key: 'id',
     render: (text) => <a>{text}</a>,
   },
   {
-    title: 'Age',
-    dataIndex: 'age',
-    key: 'age',
+    title: 'Title',
+    dataIndex: 'title',
+    key: 'title',
   },
   {
-    title: 'Address',
-    dataIndex: 'address',
-    key: 'address',
+    title: 'Category',
+    dataIndex: 'category',
+    key: 'category',
   },
-  {
-    title: 'Tags',
-    key: 'tags',
-    dataIndex: 'tags',
-    render: (_, { tags }) => (
-      <>
-        {tags.map((tag) => {
-          let color = tag.length > 5 ? 'geekblue' : 'green';
-          if (tag === 'loser') {
-            color = 'volcano';
-          }
-          return (
-            <Tag color={color} key={tag}>
-              {tag.toUpperCase()}
-            </Tag>
-          );
-        })}
-      </>
-    ),
-  },
+  
   {
     title: 'Action',
     key: 'action',
@@ -50,38 +31,22 @@ const columns = [
     ),
   },
 ];
-const data = [
-  {
-    key: '1',
-    name: 'John Brown',
-    age: 32,
-    address: 'New York No. 1 Lake Park',
-    tags: ['nice', 'developer'],
-  },
-  {
-    key: '2',
-    name: 'Jim Green',
-    age: 42,
-    address: 'London No. 1 Lake Park',
-    tags: ['loser'],
-  },
-  {
-    key: '3',
-    name: 'Joe Black',
-    age: 32,
-    address: 'Sidney No. 1 Lake Park',
-    tags: ['cool', 'teacher'],
-  },
-];
 
 
 const Listing = () => {
+  const [data,setData]=useState([]);
 
 useEffect(()=>{
 
   fetch('http://rustycoder.live:8000/listing')
   .then((response) => response.json())
-  .then((data) => console.log(data));
+  .then((result) => {
+    console.log(result.data);
+
+    setData(result.data);
+
+
+  });
 
 
 
