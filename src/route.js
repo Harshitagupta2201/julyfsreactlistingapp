@@ -1,5 +1,6 @@
 import App from "./App";
 import Listing from "./pages/Listing";
+import Login from "./pages/Login";
 
 
 const Routes=[
@@ -10,6 +11,10 @@ const Routes=[
         {
             path: "listing",
             element: <Listing/>,
+        },
+        {
+            path: "login",
+            element: <Login/>,
         }
 
     ]
