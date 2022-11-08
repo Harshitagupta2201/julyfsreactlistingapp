@@ -19,6 +19,20 @@ const columns = [
     dataIndex: 'category',
     key: 'category',
   },
+
+  {
+    title: 'Images',
+    dataIndex: 'files',
+    key: 'files',
+    render: (record) => (
+      record.split(",").map(ele=>(
+        <img src={ele} width="50px" height="50px"/>
+      ))
+      
+    ),
+  },
+
+
   
   {
     title: 'Action',
