@@ -1,5 +1,6 @@
 import React ,{useEffect,useState} from 'react'
 import { Space, Table,Tag } from 'antd';
+import axios from "axios";
 
 
 const columns = [
@@ -52,6 +53,33 @@ const Listing = () => {
 
 useEffect(()=>{
 
+  async function apiCall(){
+    try {
+      const result=await axios.get("http://rustycoder.live:8000/listing")
+      setData(result.data.data);
+      
+    } catch (error) {
+      console.log(error);
+    }
+  
+  }
+  apiCall();
+
+  /*
+
+  axios.get("http://rustycoder.live:8000/listing").then(result=>{
+    console.log(result);
+    setData(result.data.data);
+  }).catch(err=>{
+    console.log(err);
+  })
+  */
+
+ 
+
+
+  /*
+
   fetch('http://rustycoder.live:8000/listing')
   .then((response) => response.json())
   .then((result) => {
@@ -61,6 +89,7 @@ useEffect(()=>{
 
 
   });
+  */
 
 
 
