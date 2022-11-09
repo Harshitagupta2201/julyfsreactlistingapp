@@ -1,12 +1,11 @@
 import React from "react";
 import { Button, Checkbox, Form, Input } from "antd";
 
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const SignUp = () => {
-  const navigate=useNavigate();  // for dynmaic page routing 
+  const navigate = useNavigate(); // for dynmaic page routing
   const onFinish = (values) => {
-    
     // api ca;; here --->>
 
     navigate("/listing");
@@ -38,6 +37,32 @@ const SignUp = () => {
         onFinishFailed={onFinishFailed}
         autoComplete="off"
       >
+        <Form.Item
+          label="Name"
+          name="name"
+          rules={[
+            {
+              required: true,
+              message: "Please input your name!",
+            },
+          ]}
+        >
+          <Input />
+        </Form.Item>
+
+        <Form.Item
+          label="Email"
+          name="email"
+          rules={[
+            {
+              required: true,
+              message: "Please input your email!",
+            },
+          ]}
+        >
+          <Input />
+        </Form.Item>
+
         <Form.Item
           label="Username"
           name="username"
