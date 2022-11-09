@@ -51,7 +51,7 @@ const Listing = () => {
       key: 'files',
       render: (record) => (
         record.split(",").map(ele=>(
-          <img src={ele} width="50px" height="50px" style={{cursor:"pointer"}} onClick={()=>openImageInNewTab(ele)}/>
+        <> <img src={ele} width="50px" height="50px" style={{cursor:"pointer"}} onClick={()=>openImageInNewTab(ele)}/><br/></> 
         ))
         
       ),

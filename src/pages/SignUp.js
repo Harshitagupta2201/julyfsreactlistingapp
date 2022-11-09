@@ -2,13 +2,23 @@ import React from "react";
 import { Button, Checkbox, Form, Input } from "antd";
 
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const SignUp = () => {
   const navigate = useNavigate(); // for dynmaic page routing
   const onFinish = (values) => {
+    console.log(values);
     // api ca;; here --->>
 
-    navigate("/listing");
+    //
+
+axios.post("http://rustycoder.live:8181/auth/signup",values).then(response=>{
+  console.log(response.data)
+  navigate("/listing");
+}).catch(err=>{
+  console.log(err);
+})
+
   };
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
@@ -89,16 +99,6 @@ const SignUp = () => {
           <Input.Password />
         </Form.Item>
 
-        <Form.Item
-          name="remember"
-          valuePropName="checked"
-          wrapperCol={{
-            offset: 8,
-            span: 16,
-          }}
-        >
-          <Checkbox>Remember me</Checkbox>
-        </Form.Item>
 
         <Form.Item
           wrapperCol={{
