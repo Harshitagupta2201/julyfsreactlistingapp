@@ -1,9 +1,15 @@
 import React from "react";
 import { Button, Checkbox, Form, Input } from "antd";
 
+import {useNavigate} from "react-router-dom";
+
 const SignUp = () => {
+  const navigate=useNavigate();  // for dynmaic page routing 
   const onFinish = (values) => {
-    console.log("Success:", values);
+    
+    // api ca;; here --->>
+
+    navigate("/listing");
   };
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
