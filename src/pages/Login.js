@@ -2,12 +2,26 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { Button, Checkbox, Form, Input } from "antd";
 
+import axios from "axios";
+
 const Login = () => {
   const navigate = useNavigate(); // for dynmaic page routing
   const onFinish = (values) => {
-    // api ca;; here --->>
 
-    navigate("/listing");
+    axios.post("http://rustycoder.live:8181/auth/login",values).then(response=>{
+      console.log("Data---",response)
+      localStorage.setItem("token",response.data.access_token)
+      navigate("/listing");
+
+    }).catch(err=>{
+
+      console.log(err);
+
+    })
+    
+
+
+
   };
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);

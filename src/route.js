@@ -3,6 +3,7 @@ import About from "./pages/About";
 import Listing from "./pages/Listing";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
+import Validation from "./pages/Validation";
 
 const Routes = [
   {
@@ -24,6 +25,11 @@ const Routes = [
       {
         path: "about",
         element: <About />,
+      },
+
+      {
+        path: "validation",
+        element: <Validation />,
       },
     ],
   },

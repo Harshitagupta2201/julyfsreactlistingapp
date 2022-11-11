@@ -75,10 +75,27 @@ const Listing = () => {
 
   const [data,setData]=useState([]);
 
+
 useEffect(()=>{
+
+  if (!localStorage.getItem("token")){
+    navigate("/login");
+    return 
+  }
 
   async function apiCall(){
     try {
+
+      // Get the token from localstorage and will pass the token into my api 
+      // in headers
+
+      // That how to pass headers in axios
+
+      let config = {
+        headers: {
+          token: "value",  // you have to do it dynamically
+        }
+      }
       const result=await axios.get("http://rustycoder.live:8000/listing")
       setData(result.data.data);
       
