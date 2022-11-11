@@ -31,6 +31,7 @@ const Validation = () => {
     }
 
     const handleClick=()=>{
+        setErrors({})
 
         
        /*
@@ -49,6 +50,9 @@ const Validation = () => {
             setErrors({...errors,"username":"Username is Required"})
         }
 
+       
+        
+
        /* if (!state.username.includes("@")){
             /// we will allow only if the length is available
             //setErrors([...errors,{field:"username",type:"Enter Proper email"}])
@@ -59,6 +63,14 @@ const Validation = () => {
         
         else if (state.password.length==0){
             setErrors({...errors,"password":"Password is Required"})
+
+            /// we will allow only if the length is available
+           // setErrors([...errors,{field:"password",type:"Can't Be Empty"}])
+        }
+        else if (state.password.length>0){
+           if (state.password.length<5 || state.password.length<15 )
+
+            setErrors({...errors,"password":"Password should be between 5 and 15 characters"})
 
             /// we will allow only if the length is available
            // setErrors([...errors,{field:"password",type:"Can't Be Empty"}])
